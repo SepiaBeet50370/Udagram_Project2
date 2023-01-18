@@ -19,17 +19,22 @@ jobs:
           command: "echo Hello, "
 
   say-world:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
       - run:
           name: "Say hello"
           command: "echo World!"
+
+  print-env-var:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: "Print my name using setup env_variable"
+          command: echo ${MY_ENV_VAR}
 
 
 # Invoke jobs via workflows
@@ -39,3 +44,4 @@ workflows:
     jobs:
       - say-hello
       - say-world
+      - print-env-var
