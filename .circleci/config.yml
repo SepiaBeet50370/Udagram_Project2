@@ -5,36 +5,49 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  say-hello:
+  save_hello_world_output:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: cimg/base:stable
+      - image: buildpack-deps:jessie
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    working_directory: /tmp
     steps:
       - checkout
+      - run: mkdir -p workspace
       - run:
-          name: "Say hello"
-          command: "echo Hello, "
+          name: "Save hello world to output file that persits to environment"
+          command: echo "Hello, world!" > workspace/output
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - output
 
-  say-world:
+  print_output_file:
     docker:
-      - image: cimg/base:stable
+      - image: buildpack-deps:jessie
+    working_directory: /tmp
     steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo World!"
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: /tmp/workspace
 
-  print-env-var:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - run:
-          name: "Print my name using setup env_variable"
-          command: echo ${MY_ENV_VAR}
+      - run: |
+          if [[ `cat /tmp/workspace/output` == "Hello, world!" ]]; then
+            echo "It worked!";
+          else
+            echo "Nope!"; exit 1
+          fi
+
+  # print-env-var:
+  #   docker:
+  #     - image: cimg/base:stable
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: "Print my name using setup env_variable"
+  #         command: echo ${MY_ENV_VAR}
 
 
 # Invoke jobs via workflows
@@ -42,6 +55,4 @@ jobs:
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
-      - say-world
-      - print-env-var
+      - save_hello_world_output
