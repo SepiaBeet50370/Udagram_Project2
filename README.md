@@ -1,6 +1,6 @@
 # High Availability Infrastructure as Code
 
-This repository contains Infrastructure as Code (IaC) scripts to deploy the necessary network infrastructure, server infrastructure, and jumpbox infrastructure for a dummy application, PhotoGram, on Amazon Web Services (AWS) using AWS CloudFormation.
+This repository contains Infrastructure as Code (IaC) scripts to deploy the necessary network infrastructure, server infrastructure, and jumpbox infrastructure for a dummy application, PhotoGram, on Amazon Web Services (AWS) using AWS CloudFormation. Checkout the infrastructure diagram in this repository for a visual representation of the infrastructure.
 
 ## Table of Contents
 
