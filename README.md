@@ -32,8 +32,17 @@ To get started, follow these steps:
 
 1. Clone this repository to your local machine:
 
+``` bash
+git clone https://github.com/tino50370/high-availability_IAC.git
 
+```
 
+2. Navigate to the project directory:
+
+``` bash
+cd high-availability_IAC
+
+```
 
 
 
