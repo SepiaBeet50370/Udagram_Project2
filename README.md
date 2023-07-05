@@ -9,8 +9,7 @@ This repository contains Infrastructure as Code (IaC) scripts to deploy the nece
 - [Installation](#installation)
 - [Usage](#usage)
 - [Deploy Network Infrastructure](#deploy-network-infrastructure)
-- [Contributing](#contributing)
-- [License](#license)
+- [Deploy Server Infrastructure](#deploy-server-infrastructure)
 
 ## Introduction
 
@@ -54,7 +53,7 @@ This repository provides three IaC scripts for deploying different parts of the 
 To deploy the network infrastructure, which includes Virtual Private Cloud (VPC), subnets, and security groups, follow these steps:
 
 1. Open a terminal and navigate to the project directory.
-2. Ensure that the AWS CLI is configured before running the command below.
+2. Ensure that the AWS CLI is configured before running the commands below.
 3. Check the region in the create.sh file if you are on a unix OS or create.bat if you are on windows
 4. Execute the following command to create the network infrastructure using AWS CloudFormation:
 
@@ -72,40 +71,29 @@ create.bat Network Network.yml NetworkParams.json
 
 ```
 
+### Deploy Server Infrastructure
 
+To deploy the server infrastructure, which includes security groups, IAM resources, auto-scaling resources and load balancing resources, follow these steps:
 
+1. Open a terminal and navigate to the project directory.
+2. Ensure that the AWS CLI is configured before running the commands below.
+3. Check the region in the create.sh file if you are on a unix OS or create.bat if you are on windows
+4. Execute the following command to create the network infrastructure using AWS CloudFormation:
 
+Unix
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Project Title - Deploy a high-availability web app using CloudFormation
-### How to run the Deploy the Infrastructure?
-You can run the infrastructure scripts in two easy steps:
-```bash
-# Ensure that the AWS CLI is configured before runniing the command below
-# Create the network infrastructure
-# Check the region in the create.sh file
-./create.sh Network Network.yml NetworkParams.json
-# Create servers
-# Change the AMI ID and key-pair name in the servers.yml
-# Check the region in the create.sh file
-./create.sh Servers Servers.yml ServersParams.json
-# Create the jump box
-./create.sh JumpBox Jumpbox.yml JumpboxParams.json
+``` bash
+create.sh Server Servers.yml ServersParams.json
 
 ```
-### Infrastructure Diagram
-See JPEG file for the infrastructure diagram
+
+Windows
+
+``` bash
+create.bat Server Servers.yml ServersParams.json
+
+```
+
+*Optional:* Follow the same instructions to deploy the Jumpbox server as well.
+
+
