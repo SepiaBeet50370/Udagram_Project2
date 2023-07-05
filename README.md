@@ -53,7 +53,7 @@ This repository provides three IaC scripts for deploying different parts of the 
 To deploy the network infrastructure, which includes Virtual Private Cloud (VPC), subnets, and security groups, follow these steps:
 
 1. Open a terminal and navigate to the project directory.
-2. Ensure that the AWS CLI is configured before runniing the command below.
+2. Ensure that the AWS CLI is configured before running the command below.
 3. Check the region in the create.sh file if you are on a unix OS or create.bat if you are on windows
 4. Execute the following command to create the network infrastructure using AWS CloudFormation:
 
