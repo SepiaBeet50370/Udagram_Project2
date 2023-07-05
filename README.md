@@ -8,6 +8,7 @@ This repository contains Infrastructure as Code (IaC) scripts to deploy the nece
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Deploy Network Infrastructure](#deploy-network-infrastructure)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -48,7 +49,7 @@ cd high-availability_IAC
 
 This repository provides three IaC scripts for deploying different parts of the infrastructure. Each script can be executed using the provided bash files.
 
-### Network Infrastructure
+### Deploy Network Infrastructure
 
 To deploy the network infrastructure, which includes Virtual Private Cloud (VPC), subnets, and security groups, follow these steps:
 
